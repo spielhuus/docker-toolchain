@@ -1,0 +1,19 @@
+sudo: required
+language: cpp
+services:
+  - docker
+env:
+  global:
+    - secure:  "aF6MVtkVvGR+kvJJYsJmHtE1PNP0YyolC+3J+9pZULFJgJMiecsZnGfWNCCr9oKUV6tvngEkmUOGMLeetPiaz+dMTGCndnAT5Vwa4f+al+vcIsAz/BxoPGpE7vee7B5SiCImW61KUhHlqlT05IgNbx92K6pBeu1XgUrVvNxRF06tPTJlF1OCJyOu103Uy1NBHfIAwxJcLTOJ7QEi19iONveDIsm92hu/lraSG+4ecWdea4kY9l+eqBY69DquTcigP0HjvArhGA7VdcJoVgpWBkYajM+f84VazuUKsjbPLl850yUwDUvqG/YK4zLVoIaje9Rg9HlLUCcKaXSpVM0m/mTMfnn1O9Mf8mCs830xv3ojNfMM11K5jO1Mjrg4IDWZSlmPdzgnNZLGDztjR0MWwPq+dmMRfidAF8xcQO8FHG9rJ4ZeqH/ZxS0okbu/IgjJ5Np9sihDblig6AgcNNkxGLuzWwPAOv/FHvq9Rp9AGFfZp/6RhX8WhOgD+t4BiCEO3z8EZKxQu0aKgmcJZdalvNWvOeXYlJHIDZ2Myt5OsO5ddq9JBsM8prdIovgzpXUoK/Zo4kEc6w69L6ZnJdqprUvn1Bjs+hLy0iPInYAh5UrPij6KkSd0ylemCTYfmTTRm6/kXOTkTpPnewnS5idbVq1AtpD8OpxwFZjGYnX/d14=" #DOCKER_USER
+    - secure: "M8vVVPsAhQhp3djHGg2laUpHdBUabj3BOhkJ3lpKr5TDk8D0ZLNdXs4Lz0MatUgAJSu77YfydkgBEQI3mPiz9fujilcdFOOJHyhSoaFeqjS+sTJK101Ts2mkKxqMHQwSzT7+h0ZZpjZtYa12/aPTFEqCxVJfZ0KlIofRgPK0YcZZ8/6BNI72PyQdEYVokM5h0JijP3PGBlVAt5ERgr1VDB8Zy3LGZFQEBw5/vMNEDMTVsEUu48QUS657zpDi8+2FORz4kfGY3KBMWxwq8GXse9HRi3i7+u2u+gZ6XRBTqyoaI3epH14aTwgV2azS7aha69Lixx32lgHIjJtuF7gnHaFbP7rKVME5ZvW4hwsTFtLwhpb/hBuQ+Uo7NBbDR8EZ6BeAbz1NR69d/B2uR/fSH9A9OiaOe5BNGsk91jXQ7O4Asv2meSDuZzdFW/JixrrXM/T7mAueVhqQqXu7x1+ZZQ5zIRKkQi+P439J34wf3gr2m4lpXlkhXoCToU+JF1+AmBSERqG83M/0pIJl99DmoV/qa0im0JWzGwxwhQiSo5Jc0nYqcJSgpyOBtOQ5KnkpGfFtMndxKNcP3BQI3OVkLzx9RP9CYduwXZf4V2WeXnFuZS/vyC6pQcBXgX56VgsnFuEkp/FEyQD5XoJPVPdfUfD7YXEoAEmwDGdxAG7YO7g=" # DOCKER_PASS
+    - COMMIT=${TRAVIS_COMMIT::8}
+before_install:
+  - sudo git clone https://github.com/spielhuus/toolchain.git /repo
+
+script:
+  - cd /repo
+  - sudo docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - export REPO=spielhuus/toolchain
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - sudo docker build -f Dockerfile -t $REPO:$TAG .
+  - sudo docker push $REPO
