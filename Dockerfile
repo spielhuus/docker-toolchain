@@ -1,9 +1,11 @@
 FROM debian:buster-slim
 
 RUN apt-get update && apt-get upgrade -y && \
-        apt-get install -y gcc make cmake yasm nasm git neovim \
-                           pkg-config python-pip ninja-build doxygen \
-                           locales graphviz ruby-dev rubygems
+        apt-get install -y build-essential gcc g++ make ninja-build cmake git \
+		yasm nasm neovim less curl wget locales \
+                python python-dev python-pip ruby ruby-dev rubygems \
+		clang-5.0 clang-format-5.0 clang-tidy-5.0 clang-tools-5.0 libclang-5.0-dev \
+                doxygen graphviz valgrind gdb astyle uncrustify cppcheck vera++
 
 RUN sed -i 's/# de_CH.UTF-8 UTF-8/de_CH.UTF-8 UTF-8/' /etc/locale.gen && \
     sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
