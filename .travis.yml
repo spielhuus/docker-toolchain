@@ -8,7 +8,7 @@ env:
     - secure: "mvf19iiVN8o2YdkPZzmspLGz0PjDANaIrX24PkfgnTiP9JjrF1Is5qf2nwhVhAEi5ZBVH6hsDgZurEbC69L5qkGb3LQJCqciki28JgfEphQT2NNFsk2PUQmdDZRY18aj59l2UiNIKNMW/awJEB2iq86/9G50ZmOCtLAWygUMYQbIV2TKwim1C2epjDvAzWnrsDK9EIdLnbZb6kRXyH1TQp/sSUzrQn92xmUJb9aRMdmQgL8jH2ed5h7R3TDY0POzgm8jHBkFOtxhNPw/MQGXxx76McdfLXfP2PV6ibK96+RKH9DHkpcTvne9vyVgtvoU8ik6iQaTwBboFpmIkAVqxOdkAtMKJpGYTN0oBbpuorwI3K6OrG1N1yGoM81caE2G1nb2a5nnnWcDymgy1QBWrcMzOCU5zmPmXT82/stCwnCvRNojfIAA3zVBeQYu60eT+mckvMkt87u+8nv7oyFXPOfZ9ThUvEAsaZu5mSEBQSziUiuQ0CspH6akN1s8Xwcdwncy+manggiifQWmuNT+fclqjzpOCZkbg1MHuVIExUwnXQztTaNKzIsigMISe/sXSUr9IV7waV+s0lkaTFH6Z4bxdnKklS1dftwRO0bgRX4r6cyKJ4CdIP+mJEkzHeV9hJGuHAe5vR6VVEZrwj1GzzbUFrg9G8JU/iYrz0WwtFY=" # DOCKER_PASS
     - COMMIT=${TRAVIS_COMMIT::8}
 before_install:
-  - sudo git clone https://github.com/spielhuus/toolchain.git /repo
+  - sudo git clone https://github.com/spielhuus/docker-toolchain.git /repo
 
 script:
   - cd /repo
