@@ -1,5 +1,7 @@
 FROM debian:buster-slim
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get upgrade -y && \
         apt-get install -y build-essential gcc g++ make ninja-build cmake git \
 		yasm nasm neovim less curl wget locales \
