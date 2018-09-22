@@ -4,6 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN mkdir -p /usr/share/man/man1/ && \
         apt-get update && apt-get upgrade -y && \
+	echo "START INSTALL" && \
         apt-get install -y build-essential gcc g++ make ninja-build cmake git \
 		yasm nasm neovim less curl wget locales \
                 python python-dev python-pip ruby ruby-dev rubygems \
