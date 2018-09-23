@@ -1,11 +1,9 @@
-FROM debian:buster-slim
+FROM debian:stable
 
-ARG DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN mkdir -p /usr/share/man/man1/ && \
-        apt-get update && apt-get upgrade -y && \
-	echo "START INSTALL" && \
-        apt-get install -y build-essential gcc g++ make ninja-build cmake git \
+RUN mkdir apt-get update && apt-get upgrade -y && \
+          apt-get install -y build-essential gcc g++ make ninja-build cmake git \
 		yasm nasm neovim less curl wget locales \
                 python python-dev python-pip ruby ruby-dev rubygems \
 		clang-5.0 clang-format-5.0 clang-tidy-5.0 clang-tools-5.0 libclang-5.0-dev \
