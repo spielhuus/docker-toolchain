@@ -1,7 +1,7 @@
 ## This repository holds a docker recipe for the gnu toolchain.
 
 [![Build Status](https://travis-ci.org/spielhuus/docker-toolchain.svg?branch=master)](https://travis-ci.org/spielhuus/docker-toolchain)
-[![GitHub version](https://badge.fury.io/gh/spielhuus%2Ftoolchain.svg)](https://hub.docker.com/r/spielhuus/toolchain)
+[![GitHub version](https://badge.fury.io/gh/spielhuus%2Ftoolchain.svg)](https://hub.docker.com/r/spielhuus/docker-toolchain)
 
 [Docker](https://docker.io) recipe for [gnu toolchain](https://de.wikipedia.org/wiki/GNU_Toolchain) project
 
